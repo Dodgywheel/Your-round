@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PIN Lock Screen</title>
-  <<link rel="manifest" href="/your-round/manifest.json">
+  <link rel="manifest" href="/your-round/manifest.json">
   <meta name="theme-color" content="#000000">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -114,16 +114,13 @@
       const input = document.getElementById('pin-input');
       input.value += digit;
     }
-
     function deleteLastDigit() {
       const input = document.getElementById('pin-input');
       input.value = input.value.slice(0, -1);
     }
-
     function clearPin() {
       document.getElementById('pin-input').value = '';
     }
-
     function submitPin() {
       const pin = document.getElementById('pin-input').value;
       const pinMap = {
@@ -159,7 +156,6 @@
         '0030': 'Pimms',
         '0031': 'Becks blue'
       };
-
       if (pinMap[pin]) {
         const searchTerm = pinMap[pin];
         const imageSearchUrl = `https://www.google.com/search?tbm=isch&q=${encodeURIComponent(searchTerm)}`;
@@ -169,19 +165,16 @@
         clearPin();
       }
     }
-
     function updateTime() {
       const now = new Date();
       const hours = now.getHours().toString().padStart(2, '0');
       const minutes = now.getMinutes().toString().padStart(2, '0');
       document.getElementById('time').textContent = `${hours}:${minutes}`;
     }
-
     setInterval(updateTime, 1000);
     updateTime();
-
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js')
+      navigator.serviceWorker.register('/your-round/sw.js')
         .then(function(registration) {
           console.log('Service Worker registered with scope:', registration.scope);
         })
