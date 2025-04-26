@@ -1,23 +1,27 @@
-
 const CACHE_NAME = 'pin-lock-cache-v1';
 const urlsToCache = [
-  './index.html',
-  './offline.html'
+  '/',
+  '/index.html',
+  '/manifest.json',
+  '/offline.html'
 ];
 
-// Install event - cache files
+// Install the Service Worker
 self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(function(cache) {
+        console.log('Opened cache');
         return cache.addAll(urlsToCache);
       })
   );
 });
 
-// Fetch event - serve cached files if offline
+// Fetch the resources
 self.addEventListener('fetch', function(event) {
   event.respondWith(
-    fetch(event.request).catch(() => caches.match(event.request).then(response => response || caches.match('./offline.html')))
+    fetch(event.request).catch(() => 
+      caches.match(event.request).then(response => response || caches.match('/offline.html'))
+    )
   );
 });
