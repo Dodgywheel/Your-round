@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PIN Lock Screen</title>
-  <link rel="manifest" href="/your-round/manifest.json">
+  <link rel="manifest" href="/Your-round/manifest.json">
   <meta name="theme-color" content="#000000">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -174,7 +174,7 @@
     setInterval(updateTime, 1000);
     updateTime();
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/your-round/sw.js')
+      navigator.serviceWorker.register('/Your-round/sw.js')
         .then(function(registration) {
           console.log('Service Worker registered with scope:', registration.scope);
         })
